@@ -11,9 +11,10 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      # handle a successful save
+      flash[:success] = "Welcome to the Masa's Sample App 1!"
+      redirect_to @user  # show a user profile page
     else
-      render 'new'  # re-render 'new' template (signup form)
+      render 'new'       # re-render the signup form
     end
   end
 
