@@ -11,5 +11,5 @@ class User < ActiveRecord::Base
                     uniqueness: { case_sensitive: false }
 
   has_secure_password  # incl presence and matching validations
-  validates :password, length: { mininum: 6 }
+  validates :password, length: { minimum: 6 }
 end
