@@ -35,7 +35,7 @@ class UserTest < ActiveSupport::TestCase
   end
 
   test "email should not be too long" do
-    invalid_email = "a" * 244 + "@example.com"
+    invalid_email = "a" * 244 + "@example.com"  # max: 255
     @user.email = invalid_email
     assert_not @user.valid?
   end
