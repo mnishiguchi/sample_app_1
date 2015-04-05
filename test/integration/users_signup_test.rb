@@ -33,5 +33,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     
     assert_template 'users/show'  # user profile should be rendered
     assert_not_nil flash          # there should be flash message
+    assert is_logged_in?          # user should be logged in upon signup
   end
 end
