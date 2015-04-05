@@ -7,12 +7,13 @@
     This is the home page for the Sample App 1
     %br
     based on the 
-    = link_to("Ruby on Rails Tutorial", "http://www.railstutorial.org/")
+    %a{ href: "http://www.railstutorial.org/" } Ruby on Rails Tutorial
     sample application
 
   = link_to "Sign up now!", signup_path, class: "btn btn-lg btn-primary"
 
-= link_to image_tag("rails.png", alt: "Rails logo"),
-          'http://rubyonrails.org/'
-= link_to image_tag("114x114_masa_chinatown.png", alt: "Masa"),
-          'https://github.com/mnishiguchi'
+%a{ href: 'http://rubyonrails.org/' }
+  =image_tag "rails.png", alt: "Rails logo"
+
+%a{ href: 'https://github.com/mnishiguchi' }
+  =image_tag "114x114_masa_chinatown.png", alt: "Masa"
