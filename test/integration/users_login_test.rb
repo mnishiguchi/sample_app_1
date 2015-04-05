@@ -1,6 +1,12 @@
 require 'test_helper'
 
 class UsersLoginTest < ActionDispatch::IntegrationTest
+
+  def setup
+    # test users are defined in fixtures/users.yaml
+    @user = users(:masa)
+  end
+
   test "login with invalid information" do
     # Get to login path and login page should be rendered
     get login_path
@@ -13,5 +19,19 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     # The message should disapear upon subsequent request
     get root_path
     assert flash.empty?
+  end
+
+  test "login with valid information" do
+    # After valid login submission, should redirect to user profile page
+    get login_path
+    valid_input = { email: @user.email, password: 'password' }
+    post login_path, session: valid_input
+    assert_redirected_to @user
+    # After the redirect, appropreate links should be displayed
+    follow_redirect!
+    assert_template 'users/show'
+    assert_select "a[href=?]", login_path, count: 0 # login link should disappear
+    assert_select "a[href=?]", logout_path          # logout link should appear
+    assert_select "a[href=?]", user_path(@user)     # profile link should appear
   end
 end
