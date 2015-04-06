@@ -1,4 +1,5 @@
 class User < ActiveRecord::Base
+  attr_accessor :remember_token
 
   # standardize on all lower-case addresses
   before_save { self.email.downcase! }
@@ -13,6 +14,8 @@ class User < ActiveRecord::Base
   has_secure_password  # incl presence and matching validations
   validates :password, length: { minimum: 6 }
 
+  #-----------------------------------------------------------------------------
+
   class << self
 
     # return the hash digest of the given string
@@ -21,5 +24,26 @@ class User < ActiveRecord::Base
                                                     BCrypt::Engine.cost
       BCrypt::Password.create(string, cost: cost)
     end
+
+    # return a random token
+    def new_token
+      SecureRandom.urlsafe_base64
+    end
+  end
+
+  #-----------------------------------------------------------------------------
+
+  # remember a user in the database for use in persistent sessions
+  def save_new_remember_token
+    self.remember_token = User.new_token
+    update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  # return true if the given token matches the digest
+  def authenticate_with_token(token_type, token)
+    digest = send("#{token_type}_digest")
+    # avoid raising error in case of nil remember_digest
+    return false if digest.nil?
+    BCrypt::Password.new(digest).is_password?(token)
   end
 end
