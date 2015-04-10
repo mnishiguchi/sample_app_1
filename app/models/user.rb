@@ -34,7 +34,7 @@ class User < ActiveRecord::Base
   #-----------------------------------------------------------------------------
 
   # remember a user in the database for use in persistent sessions
-  def save_new_remember_token
+  def save_remember_digest
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
   end

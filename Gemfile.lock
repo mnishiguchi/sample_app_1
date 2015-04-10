@@ -45,6 +45,8 @@ GEM
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.10)
       will_paginate
+    bootswatch-rails (3.2.4)
+      railties (>= 3.1)
     builder (3.2.2)
     byebug (3.4.0)
       columnize (~> 0.8)
@@ -270,6 +272,7 @@ DEPENDENCIES
   bcrypt (= 3.1.7)
   bootstrap-sass (= 3.2.0.0)
   bootstrap-will_paginate (= 0.0.10)
+  bootswatch-rails (= 3.2.4)
   byebug (= 3.4.0)
   carrierwave (= 0.10.0)
   coffee-rails (= 4.1.0)

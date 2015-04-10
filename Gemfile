@@ -10,12 +10,14 @@ gem 'fog',                     '1.23.0'
 gem 'will_paginate',           '3.0.7'
 gem 'bootstrap-will_paginate', '0.0.10'
 gem 'bootstrap-sass',          '3.2.0.0'  # converts Less to Sass
+gem 'bootswatch-rails',        '3.2.4'    # for custom bs themes
 gem 'sass-rails',              '5.0.1'
 gem 'uglifier',                '2.5.3'
 gem 'coffee-rails',            '4.1.0'
 gem 'jquery-rails',            '4.0.3'
 gem 'haml-rails',              '0.9'      # for HAML
 gem 'redcarpet',               '3.2.2'    # for HAML
+
 gem 'turbolinks',              '2.3.0'
 gem 'jbuilder',                '2.2.3'
 gem 'sdoc',                    '0.4.0', group: :doc
