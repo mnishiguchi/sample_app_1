@@ -37,16 +37,15 @@ module SessionsHelper
     cookies.delete(:remember_token)
   end
 
-  # 1. if current user is already assigned, just return it
-  # 2. if session exists, find user and return it as current user
-  # 3. if persistent cookies exist, find user, authenticate it, return it as current user
+  # 1. If session exists, find user (as needed) and return it as current user.
+  # 2. If session is nil but persistent cookies exist,
+  #    find user, authenticate it, and return it as current user.
+  # 3. If neither session nor cookies exists, return nil.
   def current_user
-    # the current logged-in user (if any)
-    if !!(user_id = session[:user_id])
+    if !!(user_id = session[:user_id])            # check session
       @current_user ||= User.find_by(id: user_id)
 
-    # the user corresponding to the remember token cookie (if any)
-    elsif !!(user_id = cookies.signed[:user_id])
+    elsif !!(user_id = cookies.signed[:user_id])  # check cookies
       user = User.find_by(id: user_id)
       if user && user.authenticate_with_token(:remember, cookies[:remember_token])
         log_in user
