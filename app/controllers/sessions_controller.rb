@@ -1,10 +1,10 @@
 
 # Unlike the Users resource, which uses a database back-end (via the User model)
-# to persist data, the Sessions resource will use cookies, and much of the work 
+# to persist data, the Sessions resource will use cookies, and much of the work
 # involved in login comes from building this cookie-based authentication machinery
 
 class SessionsController < ApplicationController
-  
+
   # render the log in form
   def new
   end
@@ -26,7 +26,7 @@ class SessionsController < ApplicationController
 
   # delete a session
   def destroy
-    log_out
+    log_out if user_logged_in?
     redirect_to root_url
   end
 end
