@@ -12,12 +12,12 @@ class SessionsController < ApplicationController
   # create a new session
   # find user by session-email and authenticate user by session-password
   def create
-    user = User.find_by(email: params[:session][:email])
-    if user && user.authenticate(params[:session][:password])
-      log_in user
+    @user = User.find_by(email: params[:session][:email])
+    if @user && @user.authenticate(params[:session][:password])
+      log_in @user
       # remember or forget depending on the checkbox
-      params[:session][:remember_me] == '1' ? remember(user) : forget(user)
-      redirect_to user  # redirect to the user's profile page
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+      redirect_to @user  # redirect to the user's profile page
     else
       # show an error message and re-render the login form
       flash.now[:danger] = 'Invalid email/password combination'
