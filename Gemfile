@@ -16,7 +16,7 @@ gem 'uglifier',                '2.5.3'
 gem 'coffee-rails',            '4.1.0'
 gem 'jquery-rails',            '4.0.3'
 gem 'haml-rails',              '0.9'      # for HAML
-gem 'redcarpet',               '3.2.2'    # for HAML
+gem 'redcarpet',               '3.2.2'    # for Markdown
 
 gem 'turbolinks',              '2.3.0'
 gem 'jbuilder',                '2.2.3'

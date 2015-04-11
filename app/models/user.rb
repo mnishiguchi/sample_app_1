@@ -34,9 +34,15 @@ class User < ActiveRecord::Base
   #-----------------------------------------------------------------------------
 
   # remember a user in the database for use in persistent sessions
+  # generate a new token and a corresponding digest on every call
   def save_remember_digest
     self.remember_token = User.new_token
     update_attribute(:remember_digest, User.digest(remember_token))
+  end
+
+  # forget a user
+  def delete_remember_digest
+    update_attribute(:remember_digest, nil)
   end
 
   # return true if the given token matches the digest
