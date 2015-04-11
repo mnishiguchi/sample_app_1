@@ -7,7 +7,7 @@ class UserTest < ActiveSupport::TestCase
     @user = User.new(name: "Example User", email: "user@example.com",
                      password: "foobar", password_confirmation: "foobar")
   end
-  
+
   test "should be valid" do
     assert @user.valid?
   end
@@ -90,5 +90,11 @@ class UserTest < ActiveSupport::TestCase
     invalid_password = "a" * 5
     @user.password = @user.password_confirmation = invalid_password
     assert_not @user.valid?
+  end
+
+  # Digest
+
+  test "authenticate_with_token should return nil for a user with nil digest" do
+    assert_not @user.authenticate_with_token(:remember, "")
   end
 end
