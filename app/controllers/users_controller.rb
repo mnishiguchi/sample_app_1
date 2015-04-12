@@ -41,7 +41,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      # Must submit user and only specified attributes are permitted
+      # Must submit user and only specified attributes are permitted.
       params.require(:user).permit(:name, :email, :password,
                                    :password_confirmation)
     end
@@ -59,6 +59,6 @@ class UsersController < ApplicationController
     # Authorize the correct user.
     def correct_user
       @user = User.find(params[:id])
-      redirect_to(root_url) unless @user == current_user
+      redirect_to(root_url) unless current_user?(@user)
     end
 end
