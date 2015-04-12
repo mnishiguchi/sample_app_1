@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  
+
   def show
     @user = User.find_by(id: params[:id])
   end
@@ -17,6 +17,10 @@ class UsersController < ApplicationController
     else
       render 'new'       # re-render the signup form
     end
+  end
+
+  def edit
+    @user = User.find_by(id: params[:id])
   end
 
   private

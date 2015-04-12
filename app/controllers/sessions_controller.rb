@@ -1,4 +1,3 @@
-
 # Unlike the Users resource, which uses a database back-end (via the User model)
 # to persist data, the Sessions resource will use cookies, and much of the work
 # involved in login comes from building this cookie-based authentication machinery
