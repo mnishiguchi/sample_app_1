@@ -1,15 +1,12 @@
 require 'test_helper'
 
 class SiteLayoutTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  def setup
+    @user = users(:masa)
+  end
 
-  # 1.Get the root path (Home page)
-  # 2.Verify that the right page template is rendered
-  # 3.Check for the correct links to the Home, Help, About, and Contact pages
   test "layout links" do
-    # Home page
+    # Accessing the root page without being logged in.
     get root_path
     assert_template 'static_pages/home'
 
@@ -18,8 +15,16 @@ class SiteLayoutTest < ActionDispatch::IntegrationTest
     assert_select 'a[href=?]', help_path
     assert_select 'a[href=?]', contact_path
     assert_select 'a[href=?]', signup_path
-
-    # Sign up page
+    assert_select 'a[href=?]', login_path
+    # Logged in user accessing the root page.
+    log_in_as @user
+    get root_path
+    assert_select 'a[href=?]', users_path             # Users
+    assert_select 'a[href=?]', user_path(@user)       # Profile
+    assert_select 'a[href=?]', edit_user_path(@user)  # Settings
+    assert_select 'a[href=?]', logout_path            # Log out
+    assert_select 'a[href=?]', login_path, count: 0
+    # Accessing the sign up page.
     get signup_path
     assert_select 'title', full_title("Sign up")
   end
