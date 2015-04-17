@@ -42,4 +42,16 @@ class UsersControllerTest < ActionController::TestCase
     assert flash.empty?
     assert_redirected_to root_url
   end
+
+  test "should not allow the admin attribute to be edited via the web" do
+    # Log in as a non-admin user.
+    log_in_as(@other_user)
+    assert_not @other_user.admin?
+    # Try to issue PATCH request to update admin attribute.
+    patch :update, id: @other_user, user: { password:              "",
+                                            password_confirmation: "",
+                                            admin: true }
+    assert_not @other_user.reload.admin?
+  end
+
 end
