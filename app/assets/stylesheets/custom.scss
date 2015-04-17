@@ -113,6 +113,11 @@ footer {
   @include box_sizing;
 }
 
+.bootstrap_screen_size {
+  clear: both;
+  float: left;
+}
+
 /* sidebar */
 
 aside {
