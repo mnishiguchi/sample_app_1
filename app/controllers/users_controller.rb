@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
 
   def show
-    @user = User.find_by(id: params[:id])
+    @user = User.find(params[:id])
   end
 
   def new
@@ -23,11 +23,9 @@ class UsersController < ApplicationController
   end
 
   def edit
-    @user = User.find_by(id: params[:id])
   end
 
   def update
-    @user = User.find_by(id: params[:id])
     if @user.update_attributes(user_params)
       flash[:success] = "Profile updated"
       redirect_to @user
@@ -46,17 +44,18 @@ class UsersController < ApplicationController
                                    :password_confirmation)
     end
 
-    # Before-filters (Authorization)
+    # Before-filters
 
-    # Authorize a logged-in user.
+    # Confirm if a user is logged in.
     def logged_in_user
       unless user_logged_in?
+        store_location  # For friendly forwarding.
         flash[:danger] = "Please log in."
         redirect_to login_url
       end
     end
 
-    # Authorize the correct user.
+    # Confirm if a user is the current user.
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)

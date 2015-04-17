@@ -16,7 +16,7 @@ class SessionsController < ApplicationController
       log_in @user
       # remember or forget depending on the checkbox
       params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      redirect_to @user  # redirect to the user's profile page
+      redirect_back_or @user  # Friendly forwarding or profile page.
     else
       # show an error message and re-render the login form
       flash.now[:danger] = 'Invalid email/password combination'

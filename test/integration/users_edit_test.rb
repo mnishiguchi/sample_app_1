@@ -18,9 +18,10 @@ class UsersEditTest < ActionDispatch::IntegrationTest
     assert_template 'users/edit'  # Edit form should be re-rendered.
   end
 
-  test "successful edit" do
+  test "successful edit with friendly forwarding" do
+    get edit_user_path(@user)  # Access the edit page without being logged in.
     log_in_as(@user)
-    get edit_user_path(@user)
+    assert_redirected_to edit_user_path(@user)  # Friendly forwarding.
     assert_template 'users/edit'
     name_edit  = "Foo Bar"
     email_edit = "foobar@example.com"
