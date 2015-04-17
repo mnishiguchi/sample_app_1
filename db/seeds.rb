@@ -10,7 +10,7 @@ User.create!(name:  "Example User",
 99.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
-  password = "password"
+  password = "password"  # Standardize on "password" for all non-admin sample users.
   User.create!(name:  name,
                email: email,
                password:              password,
