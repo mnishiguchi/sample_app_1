@@ -1,7 +1,11 @@
 class UsersController < ApplicationController
 
-  before_action :logged_in_user, only: [:edit, :update]
+  before_action :logged_in_user, only: [:index, :edit, :update]
   before_action :correct_user,   only: [:edit, :update]
+
+  def index
+    @users = User.all
+  end
 
   def show
     @user = User.find(params[:id])
@@ -16,9 +20,9 @@ class UsersController < ApplicationController
     if @user.save
       log_in @user
       flash[:success] = "Welcome to the Masa's Sample App 1!"
-      redirect_to @user  # show a user profile page
+      redirect_to @user  # Show a user profile page.
     else
-      render 'new'       # re-render the signup form
+      render 'new'       # Re-render the signup form.
     end
   end
 
@@ -30,7 +34,7 @@ class UsersController < ApplicationController
       flash[:success] = "Profile updated"
       redirect_to @user
     else
-      render 'edit'      # re-render the edit form
+      render 'edit'      # Re-render the edit form.
     end
 
   end
