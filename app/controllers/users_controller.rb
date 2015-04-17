@@ -46,7 +46,8 @@ class UsersController < ApplicationController
 
     # Before-filters
 
-    # Confirm if a user is logged in.
+    # Confirms if a user is logged in.
+    # Requires login if not already logged in.
     def logged_in_user
       unless user_logged_in?
         store_location  # For friendly forwarding.
@@ -55,7 +56,7 @@ class UsersController < ApplicationController
       end
     end
 
-    # Confirm if a user is the current user.
+    # Confirms if a user is the current user.
     def correct_user
       @user = User.find(params[:id])
       redirect_to(root_url) unless current_user?(@user)
