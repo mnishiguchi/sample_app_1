@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'account_activations/edit'
+
   root                'static_pages#home'
 
   get    'about'   => 'static_pages#about'
