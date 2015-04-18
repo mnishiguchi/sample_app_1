@@ -4,29 +4,43 @@
 
 class SessionsController < ApplicationController
 
-  # render the log in form
+  # Renders the login form.
   def new
   end
 
-  # create a new session
-  # find user by session-email and authenticate user by session-password
+  # Creates a new session based on the login form.
+  # Finds user by email(lower case) and authenticates it by password.
+  # Rejects non-activated user.
   def create
-    @user = User.find_by(email: params[:session][:email])
+    @user = User.find_by(email: params[:session][:email].downcase)
     if @user && @user.authenticate(params[:session][:password])
-      log_in @user
-      # remember or forget depending on the checkbox
-      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
-      redirect_back_or @user  # Friendly forwarding or profile page.
+      if @user.activated?
+        log_in @user
+        remember_or_forget
+        redirect_back_or @user  # Friendly forwarding or profile page.
+      else
+        message  = "Account not activated. "
+        message += "Check your email for the activation link."
+        flash[:warning] = message
+        redirect_to root_url
+      end
     else
-      # show an error message and re-render the login form
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
   end
 
-  # delete a session
+  # Delete a session.
   def destroy
     log_out if user_logged_in?
     redirect_to root_url
   end
+
+  #----------------------------------------------------------------------------
+  private
+
+    # Remembers user for persistent session if the checkbox is checked.
+    def remember_or_forget
+      params[:session][:remember_me] == '1' ? remember(@user) : forget(@user)
+    end
 end
