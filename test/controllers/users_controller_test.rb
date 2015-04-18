@@ -7,6 +7,8 @@ class UsersControllerTest < ActionController::TestCase
     @other_user = users(:archer)
   end
 
+  # Index Authorization
+
   test "should redirect index when not logged in" do
     get :index
     assert_redirected_to login_url
@@ -76,5 +78,4 @@ class UsersControllerTest < ActionController::TestCase
     end
     assert_redirected_to root_url
   end
-
 end

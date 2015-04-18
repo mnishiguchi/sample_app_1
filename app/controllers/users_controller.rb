@@ -50,9 +50,8 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      # Must submit user and only specified attributes are permitted.
-      params.require(:user).permit(:name, :email, :password,
-                                   :password_confirmation)
+      # Note: Permit only writable attributes.
+      params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
     # Before-filters
