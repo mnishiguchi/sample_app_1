@@ -19,6 +19,6 @@
       = yield  # contents
       = render 'layouts/footer'
 
-      -if Rails.env.development?
+      - if Rails.env.development?
         = debug(params)
         = render 'layouts/bootstrap_screen_size'

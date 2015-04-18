@@ -1,0 +1,12 @@
+%h1 Masa's Sample App 1
+
+%p
+  = "Hi #{@user.name},"
+%p
+  Welcome to Masa's Sample App 1! Click on the link below to activate your account:
+
+= link_to "Activate",
+  edit_account_activation_url(@user.activation_token, email: @user.email)
+
+-# Resulting URL format
+-# http://localhost/account_activations/Y6hfVu85ozJtrNZP6MfIkw/edit?email=example%40railstutorial.org
