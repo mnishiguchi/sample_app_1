@@ -17,6 +17,8 @@ class UsersControllerTest < ActionController::TestCase
     assert_response :success
   end
 
+  # Edit/Update Authorization
+
   test "should redirect edit when not logged in" do
     get :edit, id: @user
     assert_not flash.empty?
@@ -43,6 +45,8 @@ class UsersControllerTest < ActionController::TestCase
     assert_redirected_to root_url
   end
 
+  # Illegal Access to Admin Attribute
+
   test "should not allow the admin attribute to be edited via the web" do
     # Log in as a non-admin user.
     log_in_as(@other_user)
@@ -52,6 +56,25 @@ class UsersControllerTest < ActionController::TestCase
                                             password_confirmation: "password",
                                             admin: true }
     assert_not @other_user.reload.admin?
+  end
+
+  # Destroy Authorization
+
+  test "should redirect destroy when not logged in" do
+    assert_no_difference 'User.count' do
+      delete :destroy, id: @user
+    end
+    assert_redirected_to login_url
+  end
+
+  test "should redirect destroy when logged in as a non admin" do
+    # Log in as a non-admin user.
+    log_in_as(@other_user)
+    # Try to issue DELETE request.
+    assert_no_difference 'User.count' do
+      delete :destroy, id: @user
+    end
+    assert_redirected_to root_url
   end
 
 end
