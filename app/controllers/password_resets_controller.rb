@@ -8,7 +8,10 @@ class PasswordResetsController < ApplicationController
   def new
   end
 
+  # Searches for a user by submitted email.
+  # Sends the user an email with a password reset url if s/he is found.
   def create
+    # Ensure all lower case email before performing query.
     @user = User.find_by(email: params[:password_reset][:email].downcase)
     if @user
       @user.create_reset_digest
@@ -21,9 +24,14 @@ class PasswordResetsController < ApplicationController
     end
   end
 
+  # Accessed by a reset password url that has been sent to a user.
+  # Authorizes access by before filters.
+  # Renders the password reset form.
   def edit
   end
 
+  # Authorizes access by before filters.
+  # Performs password reset and login if the user is valid.
   def update
     # Rejects blank password.
     if password_blank?
@@ -32,7 +40,7 @@ class PasswordResetsController < ApplicationController
     # Successful password reset.
     elsif @user.update_attributes(user_params)
       log_in @user
-      flash[:success] = "Password has been reset."
+      flash[:success] = "Password has been reset"
       redirect_to @user
     # Unsuccessful.
     else
@@ -51,6 +59,8 @@ class PasswordResetsController < ApplicationController
     def password_blank?
       params[:user][:password].blank?
     end
+
+    # Before filters
 
     def get_user
       @user = User.find_by(email: params[:email])
