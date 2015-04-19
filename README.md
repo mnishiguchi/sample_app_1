@@ -6,4 +6,10 @@ This is a practice app based on the
 Learn Web Development with Rails*](http://www.railstutorial.org/)
 by [Michael Hartl](http://www.michaelhartl.com/).
 
-Here, I use HAML instead of ERB.
+## Some of the features added
+- HAML instead of ERB
+- HAML markdown filter
+- Bootswatch
+- Hamburger button on the nav-bar
+- Screen-size indicator
+
