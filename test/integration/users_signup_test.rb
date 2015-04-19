@@ -7,7 +7,6 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     ActionMailer::Base.deliveries.clear
   end
 
-
   test "invalid signup information" do
     get signup_path
     invalid_input = { name:  "",
@@ -26,23 +25,44 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
   end
 
   test "valid signup information with account activation" do
+
+    # Sign up
+
     get signup_path
     valid_input = { name:  "Example User",
                     email: "user@example.com",
                     password:              "password",
                     password_confirmation: "password" }
-    # Valid user should be created.
+    # An user has been created after vaild sign up.
     assert_difference 'User.count', 1 do
       post users_path, user: valid_input
     end
-    # Activation email should be sent.
+    # Activation email should be sent to the user.
     assert_equal 1, ActionMailer::Base.deliveries.size
-    # User shouldn't be activated upon signup
-    user = assigns(:user)  # Access corresponding user in UsersController.
+    # But this user is not activated yet.
+    user = assigns(:user)  # The corresponding user in UsersController.
     assert_not user.activated?
-    # Try to log in without activation.
+    # Cannot log in before activation.
     log_in_as(user)
     assert_not is_logged_in?
+
+    # Index page & profile page
+
+    # A valid user Masa logs in and visits index page.
+    log_in_as(users(:masa))
+    get users_path, page: 2
+    # The user is on the second page,
+    # but s/he is not displayed because of not being activated.
+    assert_no_match user.name, response.body
+    # Masa then trys to visit the unactivated user's profile page,
+    # but s/he is not displayed because of not being activated.
+    get user_path(user)
+    assert_redirected_to root_url
+    # Masa logs out.
+    delete logout_path
+
+    # Activation
+
     # Invalid activation token
     get edit_account_activation_path("invalid token")
     assert_not is_logged_in?
