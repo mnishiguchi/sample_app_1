@@ -25,13 +25,16 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
+    # Rejects blank password.
     if password_blank?
       flash.now[:danger] = "Password can't be blank"
       render 'edit'
+    # Successful password reset.
     elsif @user.update_attributes(user_params)
       log_in @user
       flash[:success] = "Password has been reset."
       redirect_to @user
+    # Unsuccessful.
     else
       render 'edit'
     end
@@ -54,6 +57,9 @@ class PasswordResetsController < ApplicationController
     end
 
     # Confirms a valid user.
+    # 1. Rejects nil user.
+    # 2. Rejects non-activated user.
+    # 3. Rejects access with invalid reset-token.
     def valid_user
       unless (@user && @user.activated? &&
               @user.authenticate_with_token(:reset, params[:id]))
