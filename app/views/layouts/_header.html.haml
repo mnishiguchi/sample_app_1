@@ -1,25 +1,24 @@
 -# To activate dropdown menu,
--# add the Bootstrap JavaScript library to application.js
+-# add the Bootstrap JavaScript library to application.js.
 
 %header.navbar.navbar-fixed-top.navbar-inverse
   .container
     .navbar-header
       = link_to "sample app", root_path, id: 'logo'
 
-      -# Hamburger button
+      / Hamburger button
       %button{ type: 'button', class: ['navbar-toggle', 'collapsed'],
         data: { toggle: 'collapse', target: '#hamburger-navigation' } }
         %span.sr-only Navigation toggle
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
+        - 3.times do
+          %span.icon-bar
 
     %nav.collapse.navbar-collapse#hamburger-navigation
       %ul{ class: ['nav', 'navbar-nav', 'navbar-right'], role: 'menu' }
         %li= link_to "Home", root_path
         %li= link_to "Help", help_path
 
-        -# Show different menu items depending on the login status
+        -# Show different menu items depending on the login status.
         -if user_logged_in?
           %li= link_to "Users", users_path
           %li.dropdown
