@@ -1,0 +1,35 @@
+/ Carousel container
+%div{ id: 'carousel', class: ['carousel', 'slide'], data: { ride: 'carousel' } }
+
+  / Indicators
+  %ol.carousel-indicators
+    %li{ data: { target: '#carousel', 'slide-to' => '0' }, class: ['active'] }
+    %li{ data: { target: '#carousel', 'slide-to' => '1' } }
+    %li{ data: { target: '#carousel', 'slide-to' => '2' } }
+
+  / Slides
+  .carousel-inner
+
+    .item.active
+      =image_tag "http://placehold.it/1800x600&text=First+slide", alt: ""
+      .carousel-caption
+        %h3 Caption Heading 1
+        %p Caption Text 1
+
+    .item
+      =image_tag "http://placehold.it/1800x600&text=Second+slide", alt: ""
+      .carousel-caption
+        %h3 Caption Heading 2
+        %p Caption Text 2
+
+    .item
+      =image_tag "http://placehold.it/1800x600&text=Third+slide", alt: ""
+      .carousel-caption
+        %h3 Caption Heading 3
+        %p Caption Text 3
+
+  / Navigation
+  %a{ class: ['left', 'carousel-control'], href: "#carousel", data: { slide: 'prev' } }
+    %span.glyphicon.glyphicon-chevron-left
+  %a{ class: ['right', 'carousel-control'], href: "#carousel", data: { slide: 'next' } }
+    %span.glyphicon.glyphicon-chevron-right
