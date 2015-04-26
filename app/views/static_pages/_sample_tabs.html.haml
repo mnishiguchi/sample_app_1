@@ -1,77 +1,28 @@
-.row
+/ Tabs
+%ul{ class: ['nav', 'nav-tabs'], role: 'tablist' }
+  %li.active
+    %a{ href: "#tabs-1", role: "tab", data: { toggle: "tab" } }
+      First
+  %li
+    %a{ href: "#tabs-2", role: "tab", data: { toggle: "tab" } }
+      Second
 
-  #sample_tabs.col-md-6
-    %h1 BS3 Tabs
+/ Tab Content
+-# .fade : enables animation.
+-# .in   : ensures it's shown when the page is loaded.
+.tab-content
+  .active.tab-pane.fade.in#tabs-1
+    %p
+      %strong First.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad
+      eum possimus voluptates minus obcaecati, similique natus officia libero,
+      explicabo sapiente veritatis dignissimos cumque? In atque, voluptate
+      molestias nulla alias!
 
-    / Tabs
-    %ul{ class: ['nav', 'nav-tabs'], role: 'tablist' }
-      %li.active
-        %a{ href: "#tabs-1", role: "tab", data: { toggle: "tab" } }
-          First
-      %li
-        %a{ href: "#tabs-2", role: "tab", data: { toggle: "tab" } }
-          Second
-
-    / Tab Content
-    -# .fade : enables animation.
-    -# .in   : ensures it's shown when the page is loaded.
-    .tab-content
-      .active.tab-pane.fade.in#tabs-1
-        %p
-          %strong First.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad eum possimus voluptates minus obcaecati, similique natus officia libero, explicabo sapiente veritatis dignissimos cumque? In atque, voluptate molestias nulla alias!
-
-      .tab-pane.fade#tabs-2
-        %p
-          %strong Second.
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad eum possimus voluptates minus obcaecati, similique natus officia libero, explicabo sapiente veritatis dignissimos cumque? In atque, voluptate molestias nulla alias!
-
-  -#---------------------------------------------------------------------------
-
-  #sample_scrollspy.col-md-6
-    %h1 BS3 Scrollspy
-
-    / Navigation
-    -# .navbar           : to mark it as a navbar
-    -# .navbar-default   : to enable the color scheme)
-    -# .navbar-static    : to allow it to scroll with the page)
-    -# role='navigation  : for accessibility
-    -# id                : required to get the current position from the content
-    -# position:relative : to ensure the tabs highlight correctly as the user scrolls
-    %div{ style: 'position:relative;' }
-      %nav{ class: ['navbar', 'navbar-default', 'navbar-static'],
-        role: 'navigation', id: 'navbar-spy' }
-        %ul.nav.navbar-nav
-          %li.active
-            %a{ href: '#scroll-1' }
-              First
-          %li
-            %a{ href: '#scroll-2' }
-              Second
-          %li
-            %a{ href: '#scroll-3' }
-              Third
-
-    / Content
-    -# data-target='#id' : to send the current position to the navigation
-    -# data-spy='scroll' : required
-    -# position:relative : to ensure the tabs highlight correctly as the user scrolls
-    %div{ data: { target: '#navbar-spy', spy: 'scroll' },
-      style: 'height:150px; overflow-y:scroll; position:relative;' }
-      %p#scroll-1
-        %strong Thiis first block of content.
-        %br/
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad eum possimus voluptates minus obcaecati, similique natus officia libero, explicabo sapiente veritatis dignissimos cumque? In atque, voluptate molestias nulla alias!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad eum possimus voluptates minus obcaecati, similique natus officia libero, explicabo sapiente veritatis dignissimos cumque? In atque, voluptate molestias nulla alias!
-
-      %p#scroll-2
-        %strong This is second block of content.
-        %br/
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad eum possimus voluptates minus obcaecati, similique natus officia libero, explicabo sapiente veritatis dignissimos cumque? In atque, voluptate molestias nulla alias!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad eum possimus voluptates minus obcaecati, similique natus officia libero, explicabo sapiente veritatis dignissimos cumque? In atque, voluptate molestias nulla alias!
-
-      %p#scroll-3
-        %strong This is third block of content.
-        %br/
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad eum possimus voluptates minus obcaecati, similique natus officia libero, explicabo sapiente veritatis dignissimos cumque? In atque, voluptate molestias nulla alias!
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad eum possimus voluptates minus obcaecati, similique natus officia libero, explicabo sapiente veritatis dignissimos cumque? In atque, voluptate molestias nulla alias!
+  .tab-pane.fade#tabs-2
+    %p
+      %strong Second.
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad
+      eum possimus voluptates minus obcaecati, similique natus officia libero,
+      explicabo sapiente veritatis dignissimos cumque? In atque, voluptate
+      molestias nulla alias!
