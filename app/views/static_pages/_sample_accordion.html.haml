@@ -5,8 +5,8 @@
   .panel.panel-default
     .panel-heading
       %h4.panel-title
-        %a{ href: '#accordion-item-1',
-          data: { toggle: 'collapse', parent: '#accordion-container' } }
+        %a{ href: '#accordion-item-1', data: { toggle: 'collapse',
+                                               parent: '#accordion-container' } }
           BS3 Tabs
     #accordion-item-1.panel-collapse.collapse.in
       .panel-body
@@ -16,15 +16,22 @@
   .panel.panel-default
     .panel-heading
       %h4.panel-title
-        %a{ href: '#accordion-item-2',
-          data: { toggle: 'collapse', parent: '#accordion-container' } }
-          Item 2
+        %a{ href: '#accordion-item-2', data: { toggle: 'collapse',
+                                               parent: '#accordion-container' } }
+          BS Scrollspy
     #accordion-item-2.panel-collapse.collapse
       .panel-body
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad
-        eum possimus voluptates minus obcaecati, similique natus officia
-        libero, explicabo sapiente veritatis dignissimos cumque? In atque,
-        voluptate molestias nulla alias!
+        = render 'sample_scrollspy'
+
+  / Item 3
+  .panel.panel-default
+    .panel-heading
+      %h4.panel-title
+        %a{ href: '#accordion-item-3', data: { toggle: 'collapse',
+                                               parent: '#accordion-container' } }
+          Item 3
+    #accordion-item-3.panel-collapse.collapse
+      .panel-body
         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus ad
         eum possimus voluptates minus obcaecati, similique natus officia
         libero, explicabo sapiente veritatis dignissimos cumque? In atque,
