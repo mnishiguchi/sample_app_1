@@ -8,6 +8,9 @@ class MicropostsController < ApplicationController
       flash[:success] = "Micropost created!"
       redirect_to root_url
     else
+      # TODO: Show status feed without error due to nil @feed_items.
+      # TODO: Show status feed without error on pagination.
+      @feed_items = []
       render 'static_pages/home'
     end
   end
