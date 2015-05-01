@@ -101,8 +101,9 @@ class UserTest < ActiveSupport::TestCase
   # Microposts
 
   test "associated microposts should be destroyed" do
+    # Save user to database.
     @user.save
-    @user.microposts.create!(content: "Lorem ipsum")
+    @user.microposts.create!(content: "Lorem ipsum")  # create! raises error if any
     assert_difference 'Micropost.count', -1 do
       @user.destroy
     end

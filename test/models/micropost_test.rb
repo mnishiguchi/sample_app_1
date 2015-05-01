@@ -4,7 +4,7 @@ class MicropostTest < ActiveSupport::TestCase
 
   def setup
     @user = users(:masa)
-    @micropost = @user.micropost.build(content: "Lorem ipsum.")
+    @micropost = @user.microposts.build(content: "Lorem ipsum.")
   end
 
   # Basic sanity test.
