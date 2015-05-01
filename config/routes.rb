@@ -12,6 +12,9 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'  # create a new session
   delete 'logout'  => 'sessions#destroy' # delete a session
 
+  # To avoid error caused by paginating from MicropostsController.
+  get    'microposts' => 'static_pages#home'
+
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]

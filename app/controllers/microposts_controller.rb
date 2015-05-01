@@ -8,10 +8,12 @@ class MicropostsController < ApplicationController
       flash[:success] = "Micropost created!"
       redirect_to root_url
     else
-      # TODO: Show status feed without error due to nil @feed_items.
-      # TODO: Show status feed without error on pagination.
-      @feed_items = []
+      # Providing feed items to be displayed on the home page.
+      @feed_items = current_user.feed.paginate(page: params[:page])
       render 'static_pages/home'
+
+      # Note: To avoid error caused by paginating from MicropostsController,
+      # the following route is set: get 'microposts' => 'static_pages#home'
     end
   end
 
