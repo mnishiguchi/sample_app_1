@@ -61,15 +61,7 @@ class UsersController < ApplicationController
 
     # Before-filters
 
-    # Confirms if a user is logged in.
-    # Requires login if not already logged in.
-    def logged_in_user
-      unless user_logged_in?
-        store_location  # For friendly forwarding.
-        flash[:danger] = "Please log in."
-        redirect_to login_url
-      end
-    end
+    # NOTE: The logged_in_user filter is defined in ApplicationController.
 
     # Confirms if a user is the current user.
     def correct_user
