@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
+
   attr_accessor :remember_token, :activation_token, :reset_token
+  has_many :micropost
 
   before_save   :downcase_email  # Standardizes on all lower-case addresses.
   before_create :create_activation_digest
