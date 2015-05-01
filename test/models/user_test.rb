@@ -97,4 +97,14 @@ class UserTest < ActiveSupport::TestCase
   test "authenticate_with_token should return nil for a user with nil digest" do
     assert_not @user.authenticate_with_token(:remember, "")
   end
+
+  # Microposts
+
+  test "associated microposts should be destroyed" do
+    @user.save
+    @user.microposts.create!(content: "Lorem ipsum")
+    assert_difference 'Micropost.count', -1 do
+      @user.destroy
+    end
+  end
 end
