@@ -17,6 +17,7 @@ gem 'coffee-rails',            '4.1.0'
 gem 'jquery-rails',            '4.0.3'
 gem 'haml-rails',              '0.9'      # For HAML.
 gem 'redcarpet',               '3.2.2'    # For Markdown.
+gem 'font-awesome-rails',      '4.3.0.0'  # For icons.
 
 gem 'turbolinks',              '2.3.0'
 gem 'jbuilder',                '2.2.3'

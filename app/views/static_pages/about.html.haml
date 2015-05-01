@@ -1,5 +1,9 @@
 - provide(:title, "About")
 
+%ol.breadcrumb
+  %li= link_to "Home", root_path
+  %li.active About
+
 =render 'sample_carousel'
 
 / Page Content
