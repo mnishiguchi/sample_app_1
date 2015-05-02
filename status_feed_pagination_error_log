@@ -1,13 +1,13 @@
 Rails Tutorial (11.3.3)
 
-### NG : pagnating from MicropostsControler ###
+# NG : pagnating from MicropostsControler -----------------------------------
 
 Started GET "/microposts?page=2" for ::1 at 2015-05-01 18:50:07 -0400
 
 ActionController::RoutingError (No route matches [GET] "/microposts"):
 
 
-### OK : paginating from / ###
+# OK : paginating from / ----------------------------------------------------
 
 Started GET "/?page=2" for ::1 at 2015-05-01 18:55:58 -0400
 

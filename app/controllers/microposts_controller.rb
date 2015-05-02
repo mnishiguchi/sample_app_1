@@ -27,8 +27,9 @@ class MicropostsController < ApplicationController
   #----------------------------------------------------------------------------
   private
 
+    # Only the attributes listed here can be accessed through the web.
     def micropost_params
-      params.require(:micropost).permit(:content)
+      params.require(:micropost).permit(:content, :picture)
     end
 
     # Rejects if a user tries to delete another user’s micropost.
