@@ -96,10 +96,18 @@
         / For success/fail messages
         %button{ class: "btn btn-primary", :type => "submit"} Send Message
 
-  :javascript
-    $("#btn-google").click( function() {
-             alert("Sorry, I am not an active Google+ user.");
-    });
-    $("#btn-facebook").click( function() {
-             alert("Sorry, I don't have a Facebook account.");
-    });
+  / :javascript
+  /   $("#btn-google").click( function() {
+  /            alert("Sorry, I am not an active Google+ user.");
+  /   });
+  /   $("#btn-facebook").click( function() {
+  /            alert("Sorry, I don't have a Facebook account.");
+  /   });
+
+  :coffee
+    $('#btn-google').click ->
+      alert 'Sorry, I am not an active Google+ user.'
+      return
+    $('#btn-facebook').click ->
+      alert 'Sorry, I don\'t have a Facebook account.'
+      return
