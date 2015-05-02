@@ -12,9 +12,6 @@
         #Contact
         Contact the Ruby on Rails Tutorial about the sample app at the
         [Contact page](http://www.railstutorial.org/#contact).
-      %ol.breadcrumb
-        %li= link_to "Home", root_path
-        %li.active Contact
 
   / Content Row
   .row
@@ -23,33 +20,33 @@
       / Embedded Google Map
       %iframe{ frameborder: "0", height: "400px", marginheight: "0", marginwidth: "0", scrolling: "no",
       src: "http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed",
-      :width => "100%" }
+      :width => "100%", style: "background-color: #bcd" }
 
     / Contact Details Column
     .col-md-4
-      %h3 Contact Details
+      %h3 Nishiguchi Tech
       %p
         1234 1st St NW
         %br
-          Washington, DC 22222
-          %br
+        Washington, DC 22222
+        %br
       %p
         %i.fa.fa-phone
         = succeed ":" do
-          %abbr{:title => "Phone"} P
+          %abbr{ title: "Phone" } P
         (123) 456-7890
       %p
         %i.fa.fa-envelope-o
         = succeed ":" do
-          %abbr{:title => "Email"} E
-        %a{:href => "mailto:name@example.com"} name@example.com
+          %abbr{ title: "Email" } E
+        %a{ href: "mailto:masatoshi.nishiguchi@udc.edu"} masatoshi.nishiguchi@udc.edu
       %p
         %i.fa.fa-clock-o
         = succeed ":" do
-          %abbr{:title => "Hours"} H
+          %abbr{ title: "Hours" } H
         Monday - Friday: 9:00 AM to 5:00 PM
       %ul.list-unstyled.list-inline.list-social-icons
-        %li
+        %li#btn-facebook
           %a{ href: "#" }
             %i.fa.fa-facebook-square.fa-2x
         %li
@@ -58,7 +55,7 @@
         %li
           %a{ href: "https://twitter.com/MNishiguchiDC", target: '_blank' }
             %i.fa.fa-twitter-square.fa-2x
-        %li
+        %li#btn-google
           %a{ href: "#" }
             %i.fa.fa-google-plus-square.fa-2x
 
@@ -97,9 +94,12 @@
                     required: "", type: "email" }
         #success
         / For success/fail messages
-        %button.btn.btn-primary{:type => "submit"} Send Message
+        %button{ class: "btn btn-primary", :type => "submit"} Send Message
 
-/ Contact Form JavaScript
-/ Do not edit these files! In order to set the email address and subject line for the contact form go to the bin/contact_me.php file.
-%script{:src => "js/jqBootstrapValidation.js"}
-%script{:src => "js/contact_me.js"}
+  :javascript
+    $("#btn-google").click( function() {
+             alert("Sorry, I am not an active Google+ user.");
+    });
+    $("#btn-facebook").click( function() {
+             alert("Sorry, I don't have a Facebook account.");
+    });
