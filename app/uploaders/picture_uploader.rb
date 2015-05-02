@@ -2,9 +2,11 @@
 
 class PictureUploader < CarrierWave::Uploader::Base
 
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
-  # include CarrierWave::MiniMagick
+  # Uploaded pictures will be stored in public/uploads/micropost/picture/
+
+  # For image resizing.
+  include CarrierWave::MiniMagick
+  process resize_to_limit: [400, 400]  # Max: 400x400px
 
   # Choose what kind of storage to use for this uploader:
   storage :file
