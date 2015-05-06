@@ -10,7 +10,7 @@ class PictureUploader < CarrierWave::Uploader::Base
   if Rails.env.production?
     storage :fog   # cloud storage in production
   else
-    storage :file  # public/uploads/micropost/picture/
+    storage :file  # public/uploads/
   end
 
   # Override the directory where uploaded files will be stored.

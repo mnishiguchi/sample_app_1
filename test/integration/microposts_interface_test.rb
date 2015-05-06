@@ -37,4 +37,22 @@ class MicropostsInterfaceTest < ActionDispatch::IntegrationTest
     get user_path(users(:archer))
     assert_select 'a', text: 'delete', count: 0
   end
+
+  test "micropost sidebar count" do
+    # User with many microposts
+    log_in_as(@user)
+    get root_path
+    assert_match "#{@user.microposts.count} microposts", response.body
+
+    # User with zero microposts
+    other_user = users(:mallory)
+    log_in_as(other_user)
+    get root_path
+    assert_match "0 microposts", response.body, "Should be plural"
+
+    # User with one micropost
+    other_user.microposts.create!(content: "My first micropost")
+    get root_path
+    assert_match /\W[1] micropost\W/, response.body, "Should be singular"
+  end
 end

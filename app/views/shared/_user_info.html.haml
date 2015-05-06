@@ -5,3 +5,4 @@
   = link_to "view my profile", current_user
 %span
   = pluralize(current_user.microposts.count, "micropost")
+  / = "#{current_user.microposts.count} microposts"
