@@ -21,13 +21,18 @@ gem 'font-awesome-rails',      '4.3.0.0'  # For icons.
 
 gem 'turbolinks',              '2.3.0'
 gem 'jbuilder',                '2.2.3'
-gem 'sdoc',                    '0.4.0', group: :doc
+
+group :doc do
+  gem 'sdoc',                  '0.4.0'
+end
 
 group :development, :test do
-  gem 'sqlite3',     '1.3.9'
-  gem 'byebug',      '3.4.0'              # For debugger and byebug prompt.
-  gem 'web-console', '2.0.0.beta3'
-  gem 'spring',      '1.1.3'
+  gem 'sqlite3',           '1.3.9'
+  gem 'byebug',            '3.4.0'       # For the byebug prompt in the terminal.
+  gem 'better_errors',     '~> 2.1.1'    # For a better error page on the browser.
+  gem 'binding_of_caller', '~> 0.7.2'    # For the binding of a method's caller.
+  # gem 'web-console',       '2.0.0.beta3'
+  gem 'spring',            '1.1.3'
 end
 
 group :test do
