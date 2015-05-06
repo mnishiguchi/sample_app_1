@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
+            # class_name:  "Micropost", foreign_key: "user_id"
   has_many :active_relationships, class_name:  "Relationship",
                                   foreign_key: "follower_id",
                                   dependent:   :destroy
-
+  has_many :following, through: :active_relationships, source: :followed
 
   attr_accessor :remember_token, :activation_token, :reset_token
 
@@ -71,6 +72,23 @@ class User < ActiveRecord::Base
   # Id is automatically escaped before being included in the underlying SQL query.
   def feed
     Micropost.where("user_id = ?", id)
+  end
+
+  # Follows a user.
+  def follow(other_user)
+    # Note: follower_id is always current_user.
+    active_relationships.create(followed_id: other_user.id)
+  end
+
+  # Unfollows a user.
+  def unfollow(other_user)
+    active_relationships.find_by(followed_id: other_user.id).destroy
+  end
+
+  # Returns true if the current user is following the other user.
+  def following?(other_user)
+    # Checks if the specified user is on the following list.
+    following.include?(other_user)
   end
 
   #-----------------------------------------------------------------------------
