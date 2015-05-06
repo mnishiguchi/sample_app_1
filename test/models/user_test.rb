@@ -119,8 +119,10 @@ class UserTest < ActiveSupport::TestCase
     # After following
     masa.follow(archer)
     assert masa.following?(archer)
+    assert archer.followers.include?(masa)
     # Unfollowing
     masa.unfollow(archer)
     assert_not masa.following?(archer)
+    assert_not archer.followers.include?(masa)
   end
 end
