@@ -6,9 +6,9 @@ gem 'bcrypt',                  '3.1.7'    # For password digest.
 gem 'faker',                   '1.4.2'    # Generates sample users.
 gem 'carrierwave',             '0.10.0'   # For image upload.
 gem 'mini_magick',             '3.8.0'    # For image resizing.
-gem 'fog',                     '1.23.0'
-gem 'will_paginate',           '3.0.7'
-gem 'bootstrap-will_paginate', '0.0.10'
+gem 'fog',                     '1.23.0'   # For cloud storage.
+gem 'will_paginate',           '3.0.7'    # For pagination.
+gem 'bootstrap-will_paginate', '0.0.10'   # Converts pagination to bootstrap style.
 gem 'bootstrap-sass',          '3.2.0.0'  # Converts Less to Sass.
 gem 'bootswatch-rails',        '3.2.4'    # for custom bs themes.
 gem 'sass-rails',              '5.0.1'
@@ -28,10 +28,10 @@ end
 
 group :development, :test do
   gem 'sqlite3',           '1.3.9'
-  gem 'byebug',            '3.4.0'       # For the byebug prompt in the terminal.
-  gem 'better_errors',     '~> 2.1.1'    # For a better error page on the browser.
-  gem 'binding_of_caller', '~> 0.7.2'    # For the binding of a method's caller.
-  # gem 'web-console',       '2.0.0.beta3'
+  gem 'byebug',            '3.4.0'    # For the byebug prompt in the terminal.
+  gem 'better_errors',     '~> 2.1.1' # For a better error page on the browser.
+  gem 'binding_of_caller', '~> 0.7.2' # For the binding of a method's caller.
+  gem 'annotate',          '~> 2.6.8' # For automatic annotation for models, etc.
   gem 'spring',            '1.1.3'
 end
 
