@@ -16,6 +16,7 @@
 #
 
 class Relationship < ActiveRecord::Base
+  # The followers and the followed are users.
   belongs_to :follower, class_name: "User"
   belongs_to :followed, class_name: "User"
 

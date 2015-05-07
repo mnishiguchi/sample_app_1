@@ -71,7 +71,7 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      # Note: Permit only writable attributes.
+      # Permits only listed attributes through the web.
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
     end
 
