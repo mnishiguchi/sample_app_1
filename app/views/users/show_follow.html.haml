@@ -15,15 +15,20 @@
         = @user.microposts.count
     %section.stats
       = render 'shared/stats'
+
       - if @users.any?
         .user_avatars
           - @users.each do |user|
             = link_to gravatar_for(user, size: 30), user
+
   / Right
   .col-md-8
     %h3
       = @title
+
     - if @users.any?
       %ul.users.follow
         = render @users
       = will_paginate @users
+    - else
+      Currently none

@@ -51,6 +51,7 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
+  # Lists whom the user is following.
   def following
     @title = "Following"
     @user  = User.find(params[:id])
@@ -58,6 +59,7 @@ class UsersController < ApplicationController
     render 'show_follow'
   end
 
+  # Lists all the followers.
   def followers
     @title = "Followers"
     @user  = User.find(params[:id])

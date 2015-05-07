@@ -15,4 +15,18 @@
 #  index_relationships_on_follower_id_and_followed_id  (follower_id,followed_id) UNIQUE
 #
 
-# empty
+one:
+  follower: masa
+  followed: lana
+
+two:
+  follower: masa
+  followed: mallory
+
+three:
+  follower: lana
+  followed: masa
+
+four:
+  follower: archer
+  followed: masa
