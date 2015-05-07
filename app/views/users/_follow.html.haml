@@ -1,4 +1,10 @@
-= form_for(current_user.active_relationships.build) do |f|
+-# User has many active relationships. (A user is following somebody.)
+-# (class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy)
+-# follower: current user
+
+- rel = current_user.active_relationships.build
+
+= form_for(rel, remote: true) do |f|
   %div
     = hidden_field_tag :followed_id, @user.id
   = f.submit "Follow", class: "btn btn-primary"

@@ -1,4 +1,8 @@
-- followed = current_user.active_relationships.find_by(followed_id: @user.id)
+-# User has many active relationships. (A user is following somebody.)
+-# (class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy)
+-# follower: current user
 
-= form_for(followed, html: { method: :delete }) do |f|
+- rel = current_user.active_relationships.find_by(followed_id: @user.id)
+
+= form_for(rel, html: { method: :delete }, remote: true) do |f|
   = f.submit "Unfollow", class: "btn"

@@ -1,7 +1,8 @@
-- unless current_user?(@user)
+-# The '#follow_form' element will be updated by Ajax upon following/unfollowing.
 
-  %div#follow_form
-  - if current_user.following?(@user)
-    = render 'unfollow'
-  - else
-    = render 'follow'
+- unless current_user?(@user)
+  #follow_form
+    - if current_user.following?(@user)
+      = render 'unfollow'
+    - else
+      = render 'follow'

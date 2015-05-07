@@ -4,9 +4,14 @@ class RelationshipsController < ApplicationController
   # The current user will follow somebody.
   # follower: current_user
   def create
-    user = User.find(params[:followed_id])
-    current_user.follow(user)
-    redirect_to user
+    @user = User.find(params[:followed_id])
+    current_user.follow(@user)
+    # Only one of the lines gets executed.
+    # The respond_to is like an if-then-else statement than a series of sequential lines.
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
   end
 
   # The current user will unfollow somebody.
@@ -15,8 +20,13 @@ class RelationshipsController < ApplicationController
   def destroy
     followed_id = params[:id]
     passive_rel = Relationship.find(followed_id)
-    user = passive_rel.followed
-    current_user.unfollow(user)
-    redirect_to user
+    @user = passive_rel.followed
+    current_user.unfollow(@user)
+    # Only one of the lines gets executed.
+    # The respond_to is like an if-then-else statement than a series of sequential lines.
+    respond_to do |format|
+      format.html { redirect_to @user }
+      format.js
+    end
   end
 end
