@@ -1,7 +1,6 @@
 # == Route Map
 #
 #                  Prefix Verb   URI Pattern                             Controller#Action
-#                    root GET    /                                       static_pages#home
 #                   about GET    /about(.:format)                        static_pages#about
 #                 contact GET    /contact(.:format)                      static_pages#contact
 #                     lab GET    /lab(.:format)                          static_pages#lab
@@ -10,11 +9,21 @@
 #                         POST   /login(.:format)                        sessions#create
 #                  logout DELETE /logout(.:format)                       sessions#destroy
 #              microposts GET    /microposts(.:format)                   static_pages#home
+#          following_user GET    /users/:id/following(.:format)          users#following
+#          followers_user GET    /users/:id/followers(.:format)          users#followers
 #                   users GET    /users(.:format)                        users#index
 #                         POST   /users(.:format)                        users#create
 #                new_user GET    /users/new(.:format)                    users#new
 #               edit_user GET    /users/:id/edit(.:format)               users#edit
 #                    user GET    /users/:id(.:format)                    users#show
+#                         PATCH  /users/:id(.:format)                    users#update
+#                         PUT    /users/:id(.:format)                    users#update
+#                         DELETE /users/:id(.:format)                    users#destroy
+#                         GET    /users(.:format)                        users#index
+#                         POST   /users(.:format)                        users#create
+#                         GET    /users/new(.:format)                    users#new
+#                         GET    /users/:id/edit(.:format)               users#edit
+#                         GET    /users/:id(.:format)                    users#show
 #                         PATCH  /users/:id(.:format)                    users#update
 #                         PUT    /users/:id(.:format)                    users#update
 #                         DELETE /users/:id(.:format)                    users#destroy
@@ -26,6 +35,9 @@
 #                         PUT    /password_resets/:id(.:format)          password_resets#update
 #                         POST   /microposts(.:format)                   microposts#create
 #               micropost DELETE /microposts/:id(.:format)               microposts#destroy
+#           relationships POST   /relationships(.:format)                relationships#create
+#            relationship DELETE /relationships/:id(.:format)            relationships#destroy
+#                    root GET    /                                       static_pages#home
 #
 
 Rails.application.routes.draw do
@@ -54,6 +66,7 @@ Rails.application.routes.draw do
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
+  resources :relationships,       only: [:create, :destroy]
 
   root            to: 'static_pages#home'
 end
