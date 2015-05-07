@@ -36,12 +36,9 @@ group :development, :test do
 end
 
 group :test do
-  # Gets the default Rails tests to show red and green.
-  gem 'minitest-reporters', '1.0.5'
-  # Filters the backtrace to eliminate unwanted lines.
-  gem 'mini_backtrace',     '0.1.3'
-  # Automates the running of the tests.
-  gem 'guard-minitest',     '2.3.1'
+  gem 'minitest-reporters', '1.0.5'  # Gets the minitest to show red and green.
+  gem 'mini_backtrace',     '0.1.3'  # Filters the backtrace to eliminate unwanted lines.
+  gem 'guard-minitest',     '2.3.1'  # Automates the running of the tests.
 end
 
 group :production do
