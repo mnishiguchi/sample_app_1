@@ -30,8 +30,6 @@
 
 Rails.application.routes.draw do
 
-  root                'static_pages#home'
-
   get    'about'   => 'static_pages#about'
   get    'contact' => 'static_pages#contact'
   get    'lab'     => 'static_pages#lab'
@@ -42,11 +40,20 @@ Rails.application.routes.draw do
   post   'login'   => 'sessions#create'  # create a new session
   delete 'logout'  => 'sessions#destroy' # delete a session
 
-  # To avoid error caused by paginating from MicropostsController.
+  # To avoid error caused by paginating from Microposts controller.
   get    'microposts' => 'static_pages#home'
+
+  # To add following and followers actions to the Users controller.
+  resources :users do
+    member do
+      get :following, :followers
+    end
+  end
 
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
+
+  root            to: 'static_pages#home'
 end
