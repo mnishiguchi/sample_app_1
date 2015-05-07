@@ -1,6 +1,8 @@
 = provide(:title, @user.name)
 
+/ Show user
 .row
+  / Left
   %aside.col-md-4
     %section.user_info
       %h1
@@ -8,7 +10,7 @@
         = @user.name
     %section.stats
       = render 'shared/stats'
-
+  / Right
   .col-md-8
     = render 'follow_form' if user_logged_in?
 
