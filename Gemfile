@@ -2,24 +2,22 @@ source 'https://rubygems.org'
 # ruby '2.2.1'
 
 gem 'rails',                   '4.2.0'
-gem 'bcrypt',                  '3.1.7'    # For password digest.
-gem 'faker',                   '1.4.2'    # Generates sample users.
-gem 'carrierwave',             '0.10.0'   # For image upload.
-gem 'mini_magick',             '3.8.0'    # For image resizing.
-gem 'fog',                     '1.23.0'   # For cloud storage.
-gem 'will_paginate',           '3.0.7'    # For pagination.
-gem 'bootstrap-will_paginate', '0.0.10'   # Converts pagination to bootstrap style.
-gem 'bootstrap-sass',          '3.2.0.0'  # Converts Less to Sass.
-gem 'bootswatch-rails',        '3.2.4'    # For custom bootswatch themes.
+gem 'bcrypt',                  '3.1.7'   # For password digest.
+gem 'faker',                   '1.4.2'   # Generates sample users.
+gem 'carrierwave',             '0.10.0'  # For image upload.
+gem 'mini_magick',             '3.8.0'   # For image resizing.
+gem 'fog',                     '1.23.0'  # For cloud storage.
+gem 'will_paginate',           '3.0.7'   # For pagination.
+gem 'bootstrap-will_paginate', '0.0.10'  # Converts pagination to bootstrap style.
+gem 'bootstrap-sass',          '3.2.0.0' # Converts Less to Sass.
+gem 'bootswatch-rails',        '3.2.4'   # For custom bootswatch themes.
 gem 'sass-rails',              '5.0.1'
 gem 'uglifier',                '2.5.3'
 gem 'coffee-rails',            '4.1.0'
 gem 'jquery-rails',            '4.0.3'
-gem 'haml-rails',              '0.9'      # For HAML.
-gem 'redcarpet',               '3.2.2'    # For Markdown.
-gem 'font-awesome-rails',      '4.3.0.0'  # For icons.
-gem 'awesome_print',           '~> 1.6.1' # Pretty-prints Ruby objects.
-gem 'quiet_assets',            '~> 1.1.0' # Turns off Rails asset pipeline log.
+gem 'haml-rails',              '0.9'     # For HAML.
+gem 'redcarpet',               '3.2.2'   # For Markdown.
+gem 'font-awesome-rails',      '4.3.0.0' # For icons.
 gem 'turbolinks',              '2.3.0'
 gem 'jbuilder',                '2.2.3'
 
@@ -33,6 +31,9 @@ group :development, :test do
   gem 'better_errors',     '~> 2.1.1' # For a better error page on the browser.
   gem 'binding_of_caller', '~> 0.7.2' # For the binding of a method's caller.
   gem 'annotate',          '~> 2.6.8' # Annotates models.
+  gem 'rails-erd',         '~> 1.3.1' # Generates an entity-relationship diagram for Rails models.
+  gem 'awesome_print',     '~> 1.6.1' # Pretty-prints Ruby objects.
+  gem 'quiet_assets',      '~> 1.1.0' # Turns off Rails asset pipeline log.
   gem 'spring',            '1.1.3'
 end
 
