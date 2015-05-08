@@ -22,8 +22,8 @@
         = f.check_box :remember_me
         %span Remember me on this computer
 
-      = f.submit "Log in", class: 'btn btn-primary'
-
+      = f.submit "Log In", class: "btn btn-success",
+        data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Signing in..." }
     %p
       New user?
       = link_to "Sign up now!", signup_path

@@ -7,4 +7,6 @@
 = form_for(rel, remote: true) do |f|
   %div
     = hidden_field_tag :followed_id, @user.id
-  = f.submit "Follow", class: "btn btn-primary"
+
+  = f.button "Follow", class: "btn btn-success",
+    data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Processing..." }

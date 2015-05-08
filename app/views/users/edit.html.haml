@@ -8,8 +8,8 @@
 
       = render 'users/fields', f: f
 
-      = f.submit "Save changes", class: 'btn btn-primary'
-
+      = f.button "Save changes", class: "btn btn-success",
+        data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Processing..." }
     .gravatar_edit
       = gravatar_for @user  # Defined in UsersHelper
       %a{ href: "http://gravatar.com/emails", target: '_blank' }

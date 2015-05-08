@@ -8,4 +8,5 @@
       = f.label :email
       = f.email_field :email, class: 'form-control'
 
-      = f.submit "Submit", class: 'btn btn-primary'
+      = f.button "Submit", class: "btn btn-success",
+        data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Processing..." }
