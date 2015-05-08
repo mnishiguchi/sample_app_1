@@ -18,7 +18,7 @@ gem 'jquery-rails',            '4.0.3'
 gem 'haml-rails',              '0.9'      # For HAML.
 gem 'redcarpet',               '3.2.2'    # For Markdown.
 gem 'font-awesome-rails',      '4.3.0.0'  # For icons.
-
+gem 'quiet_assets',            '~> 1.1.0' # Turns off Rails asset pipeline log.
 gem 'turbolinks',              '2.3.0'
 gem 'jbuilder',                '2.2.3'
 
