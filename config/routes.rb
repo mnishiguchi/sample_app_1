@@ -19,14 +19,6 @@
 #                         PATCH  /users/:id(.:format)                    users#update
 #                         PUT    /users/:id(.:format)                    users#update
 #                         DELETE /users/:id(.:format)                    users#destroy
-#                         GET    /users(.:format)                        users#index
-#                         POST   /users(.:format)                        users#create
-#                         GET    /users/new(.:format)                    users#new
-#                         GET    /users/:id/edit(.:format)               users#edit
-#                         GET    /users/:id(.:format)                    users#show
-#                         PATCH  /users/:id(.:format)                    users#update
-#                         PUT    /users/:id(.:format)                    users#update
-#                         DELETE /users/:id(.:format)                    users#destroy
 # edit_account_activation GET    /account_activations/:id/edit(.:format) account_activations#edit
 #         password_resets POST   /password_resets(.:format)              password_resets#create
 #      new_password_reset GET    /password_resets/new(.:format)          password_resets#new
@@ -62,11 +54,10 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
 
-  root            to: 'static_pages#home'
+  root 'static_pages#home'
 end

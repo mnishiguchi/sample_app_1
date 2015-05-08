@@ -8,6 +8,8 @@ class FollowingTest < ActionDispatch::IntegrationTest
     log_in_as(@user)
   end
 
+  # The show-follow page
+
   test "following page" do
     # Masa is currently following a few users.
     # He trys to list his following.
@@ -33,6 +35,9 @@ class FollowingTest < ActionDispatch::IntegrationTest
       assert_select "a[href=?]", user_path(user)
     end
   end
+
+  # The follow/unfollow button
+
   test "should follow a user the standard way" do
     assert_difference '@user.following.count', 1 do
       post relationships_path, followed_id: @other.id
