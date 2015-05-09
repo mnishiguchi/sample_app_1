@@ -86,6 +86,7 @@ footer {
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
+  clear: both;
   a {
     color: $gray;
     &:hover {
@@ -197,7 +198,7 @@ aside {
 
 /* forms */
 
-input, textarea, select, button, .uneditable-input {
+input, textarea, select, .submit, .uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
@@ -239,7 +240,7 @@ input {
 
 /* Users index */
 
-.users {
+.all_users {
   list-style: none;
   margin: 0;
   li {
@@ -247,35 +248,6 @@ input {
     padding: 10px 0;
     border-bottom: 1px solid $gray-lighter;
   }
-}
-
-/* Modern Business */
-
-.img-portfolio {
-    margin-bottom: 30px;
-}
-
-.img-hover:hover {
-    opacity: 0.8;
-}
-
-/* Header Carousel */
-
-header.carousel {
-    height: 50%;
-}
-
-header.carousel .item,
-header.carousel .item.active,
-header.carousel .carousel-inner {
-    height: 100%;
-}
-
-header.carousel .fill {
-    width: 100%;
-    height: 100%;
-    background-position: center;
-    background-size: cover;
 }
 
 /* microposts */
@@ -323,4 +295,38 @@ span.picture {
   input {
     border: 0;
   }
+}
+
+/* Pagination */
+// .pagination {
+//   margin: 0;
+// }
+
+/* Modern Business */
+
+.img-portfolio {
+    margin-bottom: 30px;
+}
+
+.img-hover:hover {
+    opacity: 0.8;
+}
+
+/* Header Carousel */
+
+header.carousel {
+    height: 50%;
+}
+
+header.carousel .item,
+header.carousel .item.active,
+header.carousel .carousel-inner {
+    height: 100%;
+}
+
+header.carousel .fill {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
 }

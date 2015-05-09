@@ -4,9 +4,13 @@
 %h1
   All users
 
-= will_paginate @users
+%ul.all_users
+  .user_search.input-group
+    %input.form-control{ placeholder: "Search for...", type: "text"}/
+    %span.input-group-btn
+      %button.btn.btn-default{ type: "button" } Go!
 
-%ul.users
-  = render @users
-
-= will_paginate @users
+  = will_paginate @users
+  %div
+    = render @users
+  = will_paginate @users

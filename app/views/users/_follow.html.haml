@@ -8,5 +8,5 @@
   %div
     = hidden_field_tag :followed_id, @user.id
 
-  = f.button "Follow", class: "btn btn-success",
+  = f.button "Follow", class: "submit btn btn-success",
     data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Processing..." }

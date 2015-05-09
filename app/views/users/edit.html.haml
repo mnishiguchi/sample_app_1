@@ -8,7 +8,7 @@
 
       = render 'users/fields', f: f
 
-      = f.button "Save changes", class: "btn btn-success",
+      = f.button "Save changes", class: "submit btn btn-success",
         data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Processing..." }
     .gravatar_edit
       = gravatar_for @user  # Defined in UsersHelper
