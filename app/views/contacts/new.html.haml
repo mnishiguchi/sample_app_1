@@ -11,6 +11,7 @@
     %iframe{ frameborder: "0", height: "400px", marginheight: "0", marginwidth: "0", scrolling: "no",
     src: "http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed",
     :width => "100%", style: "background-color: #bcd", id: "map" }
+    %hr/
 
     / Contact Form
     %h3#contact_us Send us a Message
@@ -25,6 +26,7 @@
       = f.text_area :message, class: 'form-control'
       = f.button "Submit", class: "submit btn btn-success",
         data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Proessing..." }
+  %hr/
 
   / Contact Details Column
   .col-md-4

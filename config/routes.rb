@@ -2,7 +2,6 @@
 #
 #                  Prefix Verb   URI Pattern                             Controller#Action
 #                   about GET    /about(.:format)                        static_pages#about
-#                 contact GET    /contact(.:format)                      static_pages#contact
 #                     lab GET    /lab(.:format)                          static_pages#lab
 #                  signup GET    /signup(.:format)                       users#new
 #                   login GET    /login(.:format)                        sessions#new
@@ -29,6 +28,8 @@
 #               micropost DELETE /microposts/:id(.:format)               microposts#destroy
 #           relationships POST   /relationships(.:format)                relationships#create
 #            relationship DELETE /relationships/:id(.:format)            relationships#destroy
+#                contacts POST   /contacts(.:format)                     contacts#create
+#             new_contact GET    /contacts/new(.:format)                 contacts#new
 #                    root GET    /                                       static_pages#home
 #
 

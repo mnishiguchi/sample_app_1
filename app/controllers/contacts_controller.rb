@@ -6,8 +6,8 @@ class ContactsController < ApplicationController
   def create
     @contact = Contact.new(params[:contact])
     if @contact.valid?
-      # ContactMailer.new_contact(@contact).deliver  # TODO
-      flash[:warning] = "Under construction, message was not sent"
+      ContactMailer.message_from_user(@contact).deliver_now
+      flash[:info] = "Thank you for your message!"
       redirect_to root_path
     else
       render 'new'
