@@ -35,11 +35,8 @@
 Rails.application.routes.draw do
 
   get    'about'   => 'static_pages#about'
-  get    'contact' => 'static_pages#contact'
   get    'lab'     => 'static_pages#lab'
-
   get    'signup'  => 'users#new'        # show signup form
-
   get    'login'   => 'sessions#new'     # show login form
   post   'login'   => 'sessions#create'  # create a new session
   delete 'logout'  => 'sessions#destroy' # delete a session
@@ -58,6 +55,9 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :microposts,          only: [:create, :destroy]
   resources :relationships,       only: [:create, :destroy]
+
+  # Contact form
+  resources :contacts, only: [:new, :create]
 
   root 'static_pages#home'
 end

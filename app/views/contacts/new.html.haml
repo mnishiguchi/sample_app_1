@@ -1,0 +1,77 @@
+- provide(:title, "Contact")
+
+%h1
+  Contact
+
+/ Content Row
+.row
+  / Map Column
+  .col-md-8
+    / Embedded Google Map
+    %iframe{ frameborder: "0", height: "400px", marginheight: "0", marginwidth: "0", scrolling: "no",
+    src: "http://maps.google.com/maps?hl=en&amp;ie=UTF8&amp;ll=37.0625,-95.677068&amp;spn=56.506174,79.013672&amp;t=m&amp;z=4&amp;output=embed",
+    :width => "100%", style: "background-color: #bcd", id: "map" }
+
+    / Contact Form
+    %h3#contact_us Send us a Message
+    = form_for @contact do |f|
+      = render 'shared/error_messages', object: f.object
+
+      = f.label :name
+      = f.text_field :name, class: 'form-control'
+      = f.label :email
+      = f.email_field :email, class: 'form-control'
+      = f.label :message
+      = f.text_area :message, class: 'form-control'
+      = f.button "Submit", class: "submit btn btn-success",
+        data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Proessing..." }
+
+  / Contact Details Column
+  .col-md-4
+    %h3 Nishiguchi Tech
+    %p
+      1234 1st St NW
+      %br
+      Washington, DC 22222
+      %br
+    %p
+      %i.fa.fa-phone
+      = succeed ":" do
+        %abbr{ title: "Phone" } P
+      (123) 456-7890
+    %p
+      %i.fa.fa-envelope-o
+      = succeed ":" do
+        %abbr{ title: "Email" } E
+      %a{ href: "mailto:masatoshi.nishiguchi@udc.edu"} masatoshi.nishiguchi@udc.edu
+    %p
+      %i.fa.fa-clock-o
+      = succeed ":" do
+        %abbr{ title: "Hours" } H
+      Monday - Friday: 9:00 AM to 5:00 PM
+    %ul.list-unstyled.list-inline.list-social-icons
+      %li#btn-facebook
+        %a{ href: "#" }
+          %i.fa.fa-facebook-square.fa-2x
+      %li
+        %a{ href: "https://www.linkedin.com/profile/view?id=101724080", target: '_blank' }
+          %i.fa.fa-linkedin-square.fa-2x
+      %li
+        %a{ href: "https://twitter.com/MNishiguchiDC", target: '_blank' }
+          %i.fa.fa-twitter-square.fa-2x
+      %li#btn-google
+        %a{ href: "#" }
+          %i.fa.fa-google-plus-square.fa-2x
+
+-# TODO if error exists, hide the map
+- if @contact.errors.any?
+  :coffee
+    $('#map').hide()
+
+:coffee
+  $('#btn-google').click ->
+    alert 'Sorry, I am not an active Google+ user.'
+    return
+  $('#btn-facebook').click ->
+    alert 'Sorry, I don\'t have a Facebook account.'
+    return
