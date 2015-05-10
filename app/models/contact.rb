@@ -6,4 +6,6 @@ class Contact
   validates :name, presence: true
   validates :email, presence: true
   validates :message, presence: true, length: { maximum: 300 }
+
+  # TODO improve validation requirements
 end

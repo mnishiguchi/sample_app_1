@@ -19,6 +19,7 @@ gem 'haml-rails',              '0.9'     # For HAML.
 gem 'redcarpet',               '3.2.2'   # For Markdown.
 gem 'font-awesome-rails',      '4.3.0.0' # For icons.
 gem 'turbolinks',              '2.3.0'
+gem 'jquery-turbolinks',       '~> 0.2.1'
 gem 'jbuilder',                '2.2.3'
 
 group :doc do

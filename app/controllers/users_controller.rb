@@ -6,9 +6,13 @@ class UsersController < ApplicationController
 
   # Shows all the activated users with pagination.
   def index
-    # @users = User.all
-    # @users = User.paginate(page: params[:page])
-    @users = User.where(activated: true).paginate(page: params[:page])
+    @user_search = UserSearch.new params[:user_search]
+
+    if @user_search.q.present?
+      @users = User.where(activated: true).name_filter(@user_search.q).paginate(page: params[:page])
+    else
+      @users = User.where(activated: true).paginate(page: params[:page])
+    end
   end
 
   # Shows a profile page only if the user is activated.

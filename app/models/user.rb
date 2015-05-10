@@ -49,6 +49,9 @@ class User < ActiveRecord::Base
   has_secure_password  # Incl. presence and matching validations.
   validates :password, length: { minimum: 6 }, allow_blank: true
 
+  # For user search
+  scope :name_filter, ->(q) { where 'name LIKE ?', "%#{q}%" }
+
   # Remembers a user in the database for use in persistent sessions.
   # Generates a new token and a corresponding digest upon every call.
   def save_remember_digest
