@@ -103,9 +103,10 @@ class User < ActiveRecord::Base
     # Micropost.where("user_id IN (:following_ids) OR user_id = :user_id",
     #               following_ids: following_ids, user_id: id)
 
-    # SQL subselect
+    # SQL subselect to find the ids of the followed in the database.
     following_ids = "SELECT followed_id FROM relationships
                      WHERE  follower_id = :user_id"
+    # Embedding the SQL subselect in the query.
     Micropost.where("user_id IN (#{following_ids})
                      OR user_id = :user_id", user_id: id)
   end
