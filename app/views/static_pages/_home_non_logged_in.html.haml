@@ -1,19 +1,24 @@
 / Home non-logged-in
 .center.jumbotron
   %h1
-    Masa's Sample App 1
+    Welcome to Masatoshi's App
 
   %h1.small
-    This is the home page for the Sample App 1
+    This is my first website.
     %br
-    based on the
-    %a{ href: "http://www.railstutorial.org/" }
-      Ruby on Rails Tutorial sample application
+    I made this based on what I learned in
+    %a{ href: "https://github.com/mhartl/", target: '_blank' }
+      Michael Hartl
+    's
+    %a{ href: "http://www.railstutorial.org/", target: '_blank' }
+      Ruby on Rails Tutorial.
+    %br
+    This is a sandbox where I experiment new techniques.
 
-  = link_to "Sign up now!", signup_path, class: "submit btn btn-lg btn-success"
+  = link_to "Sign up now!", signup_path, class: "btn btn-lg btn-success"
 
-%a{ href: 'http://rubyonrails.org/' }
+%a{ href: 'http://rubyonrails.org/', target: '_blank' }
   =image_tag "rails.png", alt: "Rails logo"
 
-%a{ href: 'https://github.com/mnishiguchi' }
+%a{ href: 'https://github.com/mnishiguchi', target: '_blank' }
   =image_tag "114x114_masa_chinatown.png", alt: "Masa"
