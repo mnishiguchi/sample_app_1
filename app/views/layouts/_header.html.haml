@@ -14,9 +14,10 @@
           %span.icon-bar
 
     / User name
-    .navbar-text.label.label-default
-      Signed in as
-      = link_to current_user.name, current_user if user_logged_in?
+    - if user_logged_in?
+      .navbar-text.label-lg.label-primary.center
+        Signed in as
+        = link_to current_user.name, current_user
 
     / Nav links
     %nav.collapse.navbar-collapse#hamburger-navigation
