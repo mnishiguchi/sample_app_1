@@ -9,5 +9,5 @@ $ ->
     $(ids).show()
 
     # For debugging
-    # alert("Searching...")
+    # alert(ids)
     # console.log(ids)

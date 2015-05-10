@@ -1,11 +1,8 @@
 = form_for @user_search, url: users_path(format: :json),
   remote: true, html: {method: :get} do |f|
-  = render 'shared/error_messages', object: f.object
-  = f.search_field :q
-  = f.button '検索', class: "submit btn btn-success",
-    data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> 検索中..." }
 
-  /   .user_search.input-group
-  /     %input.form-control{ placeholder: "Search for...", type: "text"}/
-  /     %span.input-group-btn
-  /       %button.btn.btn-default{ type: "button" } Go!
+  .user_search.input-group
+    = f.search_field :q, class: "form-control", placeholder: "Search in this page"
+    %span.input-group-btn
+      = f.button '検索', class: "btn btn-success",
+        data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> 検索中..." }
