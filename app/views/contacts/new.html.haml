@@ -25,16 +25,16 @@
       = f.label :message
       = f.text_area :message, class: 'form-control'
       = f.button "Submit", class: "submit btn btn-success",
-        data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Proessing..." }
+        data: { disable_with: "<i class='fa fa-spinner fa-spin'></i> Processing..." }
   %hr/
 
   / Contact Details Column
   .col-md-4
-    %h3 Nishiguchi Tech
+    %h3 Masatoshi Nishiguchi
     %p
       1234 1st St NW
       %br
-      Washington, DC 22222
+      Washington, DC 21234
       %br
     %p
       %i.fa.fa-phone
@@ -65,11 +65,12 @@
         %a{ href: "#" }
           %i.fa.fa-google-plus-square.fa-2x
 
--# TODO if error exists, hide the map
+-# Hides the map if form errors exist.
 - if @contact.errors.any?
   :coffee
     $('#map').hide()
 
+-# Responds to clicking on unused social buttons.
 :coffee
   $('#btn-google').click ->
     alert 'Sorry, I am not an active Google+ user.'
