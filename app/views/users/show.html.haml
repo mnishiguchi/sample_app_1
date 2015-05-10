@@ -15,9 +15,12 @@
   .col-md-8
     = render 'follow_form' if user_logged_in?
 
+    %h3
+      Microposts (#{@user.microposts.count})
+
     - if @user.microposts.any?
-      %h3
-        Microposts (#{@user.microposts.count})
       %ol.microposts
         = render @microposts
       = will_paginate @microposts
+    - else
+      Currently none
