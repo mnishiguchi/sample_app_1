@@ -4,6 +4,8 @@ class UsersController < ApplicationController
   before_action :correct_user,   only: [:edit, :update]
   before_action :admin_user,     only: :destroy
 
+  before_action :clear_search_index, :only => [:index]
+
   # Shows all the activated users with pagination.
   # Warning: users must be activated.
   def index
@@ -89,5 +91,20 @@ class UsersController < ApplicationController
      # Confirms if a user is an admin.
     def admin_user
       redirect_to root_url unless current_user.admin?
+    end
+
+    def search_params
+      params[:q]
+    end
+
+    def clear_search_index
+      if params[:search_cancel]
+        params.delete(:search_cancel)
+        if(!search_params.nil?)
+          search_params.each do |key, param|
+            search_params[key] = nil
+          end
+        end
+      end
     end
 end

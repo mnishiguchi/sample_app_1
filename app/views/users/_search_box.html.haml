@@ -1,14 +1,13 @@
-= search_form_for @search, url: users_path, method: :get do |f|
-  = f.condition_fields do |c|
-    = render "condition_fields", f: c
-  %p
-    = link_to_add_fields "Add Conditions", f, :condition
+.panel.panel-primary
+  .panel-body
+    = search_form_for @search, url: users_path, method: :get do |f|
+      = f.condition_fields do |c|
+        = render "condition_fields", f: c
 
-  .actions
-    = f.submit "Search"
+      -# Note: link_to_add_fields is defined in application_helper.rb
+      = link_to_add_fields "Add Search Conditions", f, :condition
 
-
-    / .user_search.input-group
-  /   %input.form-control{ placeholder: "Search for...", type: "text"}/
-  /   %span.input-group-btn
-  /     %button.btn.btn-default{ type: "button" } Go!
+      #user_search_button.col-xs-12
+        = f.button "Search", class: "btn btn-success",
+          data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>Processing..."}
+    = link_to "Clear search", users_path
