@@ -9,8 +9,6 @@ class UsersController < ApplicationController
   def index
     @search = User.where(activated: true).search(params[:q])
     @users = @search.result.paginate(page: params[:page])
-    # @users = User.all
-    # @users = User.paginate(page: params[:page])
     # @users = User.where(activated: true).paginate(page: params[:page])
   end
 
