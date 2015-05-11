@@ -1,0 +1,14 @@
+= search_form_for @search, url: users_path, method: :get do |f|
+  = f.condition_fields do |c|
+    = render "condition_fields", f: c
+  %p
+    = link_to_add_fields "Add Conditions", f, :condition
+
+  .actions
+    = f.submit "Search"
+
+
+    / .user_search.input-group
+  /   %input.form-control{ placeholder: "Search for...", type: "text"}/
+  /   %span.input-group-btn
+  /     %button.btn.btn-default{ type: "button" } Go!

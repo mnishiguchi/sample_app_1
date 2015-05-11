@@ -5,10 +5,13 @@ class UsersController < ApplicationController
   before_action :admin_user,     only: :destroy
 
   # Shows all the activated users with pagination.
+  # Warning: users must be activated.
   def index
+    @search = User.where(activated: true).search(params[:q])
+    @users = @search.result.paginate(page: params[:page])
     # @users = User.all
     # @users = User.paginate(page: params[:page])
-    @users = User.where(activated: true).paginate(page: params[:page])
+    # @users = User.where(activated: true).paginate(page: params[:page])
   end
 
   # Shows a profile page only if the user is activated.
