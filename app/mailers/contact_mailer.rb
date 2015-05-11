@@ -8,4 +8,5 @@ class ContactMailer < ApplicationMailer
          from: contact.email,
          subject: "A message from #{user_with_email}"
   end
+
 end

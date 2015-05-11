@@ -17,5 +17,4 @@ class ContactMailerTest < ActionMailer::TestCase
     # Contents
     assert_match @contact.message, mail.body.encoded
   end
-
 end
