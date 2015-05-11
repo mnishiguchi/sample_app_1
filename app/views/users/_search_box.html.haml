@@ -10,4 +10,4 @@
       #user_search_button.col-xs-12
         = f.button "Search", class: "btn btn-success",
           data: {disable_with: "<i class='fa fa-spinner fa-spin'></i>Processing..."}
-    = link_to "Clear search", users_path
+        = link_to "Clear search", users_path, class: "btn btn-default"

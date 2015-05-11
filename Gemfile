@@ -22,6 +22,7 @@ gem 'ransack',                 '~> 1.6.6'   # For searching and sorting.
 gem 'uglifier',                '~> 2.5.3'
 gem 'coffee-rails',            '~> 4.1.0'
 gem 'jquery-rails',            '~> 4.0.3'
+gem 'jquery-turbolinks',       '~> 0.2.1'
 gem 'turbolinks',              '~> 2.3.0'
 gem 'jbuilder',                '~> 2.2.3'
 
