@@ -2,13 +2,12 @@ source 'https://rubygems.org'
 # ruby '2.2.1'
 
 gem 'rails',                   '~> 4.2.0'
-gem 'bcrypt',                  '~> 3.1.7'   # For password digest.
+
 # Uploading
 gem 'carrierwave',             '~> 0.10.0'  # For image upload.
 gem 'mini_magick',             '~> 3.8.0'   # For image resizing.
 gem 'fog',                     '~> 1.23.0'  # For cloud storage.
 # Styling
-gem 'sass-rails',              '~> 5.0.1'
 gem 'will_paginate',           '~> 3.0.7'   # For pagination.
 gem 'bootstrap-will_paginate', '~> 0.0.10'  # Converts pagination to bootstrap style.
 gem 'bootstrap-sass',          '~> 3.2.0.0' # Converts Less to Sass.
@@ -18,17 +17,17 @@ gem 'font-awesome-rails',      '~> 4.3.0.0' # For icons.
 gem 'haml-rails',              '~> 0.9'     # For HAML.
 gem 'redcarpet',               '~> 3.2.2'   # For Markdown.
 gem 'ransack',                 '~> 1.6.6'   # For searching and sorting.
+# Security
+gem 'bcrypt',                  '~> 3.1.7'   # For password digest.
 # Rails
+gem 'sass-rails',              '~> 5.0.1'
 gem 'uglifier',                '~> 2.5.3'
 gem 'coffee-rails',            '~> 4.1.0'
 gem 'jquery-rails',            '~> 4.0.3'
-gem 'jquery-turbolinks',       '~> 0.2.1'
+gem 'jquery-turbolinks',       '~> 0.2.1'   # For jQuery to work with turbolinks.
 gem 'turbolinks',              '~> 2.3.0'
 gem 'jbuilder',                '~> 2.2.3'
-
-group :doc do
-  gem 'sdoc',                  '~> 0.4.0'
-end
+gem 'sdoc',                    '~> 0.4.0', group: :doc
 
 group :development, :test do
   gem 'sqlite3',           '~> 1.3.9'
