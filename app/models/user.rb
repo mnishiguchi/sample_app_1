@@ -146,7 +146,7 @@ class User < ActiveRecord::Base
   end
 
   def self.to_csv(options = {})  # e.g., headers
-    attributes = %w(id email name)
+    attributes = %w(id name created_at activated_at activated_at)
 
     CSV.generate(options) do |csv|
       csv << attributes
