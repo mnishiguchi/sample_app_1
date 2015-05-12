@@ -12,6 +12,12 @@ class UsersController < ApplicationController
     @search = User.where(activated: true).search(params[:q])
     @users = @search.result.paginate(page: params[:page])
     # @users = User.where(activated: true).paginate(page: params[:page])
+
+    respond_to do |format|
+      format.html
+      format.csv { send_data @users.unscoped.to_csv,
+                             filename: "users-#{Date.today}.csv" }
+    end
   end
 
   # Shows a profile page only if the user is activated.
