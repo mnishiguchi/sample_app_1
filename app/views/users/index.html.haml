@@ -3,6 +3,11 @@
 / All users
 %h1
   All users
+%p
+  Download:
+  = link_to "CSV", users_path(format: "csv")
+  = "|"
+  = link_to "Excel", "#"
 
 = render 'search_box'
 
