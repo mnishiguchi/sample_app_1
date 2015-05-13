@@ -39,6 +39,7 @@ group :development, :test do
   gem 'awesome_print',     '~> 1.6.1'  # Pretty-prints Ruby objects.
   gem 'quiet_assets',      '~> 1.1.0'  # Turns off Rails asset pipeline log.
   gem 'faker',             '~> 1.4.2'  # Generates sample users.
+  gem 'guard-livereload',  '~> 2.4', require: false  # Automatically reload the browser when 'view' files are modified.
   gem 'spring',            '~> 1.1.3'
 end
 
